@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from __future__ import division, print_function, absolute_import
 """
 Simple example using LSTM recurrent neural network to classify IMDB
 sentiment dataset.
@@ -26,7 +27,7 @@ The dataset is a preprocessed dataset which process every sentense into number a
 frequency of every words.
 '''
 
-from __future__ import division, print_function, absolute_import
+
 
 import tflearn
 from tflearn.data_utils import pad_sequences
