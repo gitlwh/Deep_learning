@@ -81,13 +81,10 @@ def get_coco_batch(category, batch_size, im_size, data_type='train'):
     img_ids = np.random.permutation(coco.getImgIds(catIds=cat_id))
     np.random.set_state(st0)
     n_train = int(len(img_ids) * .8)
-    n_valid = int(len(img_ids) * .1)
     if data_type == 'train':
         img_ids = img_ids[:n_train]
-    elif data_type == 'val':
-        img_ids = img_ids[n_train:n_train+n_valid]
     elif data_type == 'test':
-        img_ids = img_ids[n_train+n_valid:]
+        img_ids = img_ids[n_train:]
 
     # Fetch the batch.
     ims = np.zeros((batch_size, im_size[0], im_size[1], 3))
@@ -124,3 +121,4 @@ if __name__ == "__main__":
         plt.imshow(masks[im_id].squeeze() > .5, cmap='gray', alpha=.8)
 
     plt.savefig('coco_examples.png')
+    plt.show()
